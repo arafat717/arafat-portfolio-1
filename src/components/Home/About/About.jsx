@@ -36,7 +36,7 @@ const About = () => {
 
   return (
     <div name="about">
-      <div className="w-full bg-gradient-to-b h-screen">
+      <div className="w-full bg-gradient-to-b">
         <div
           className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"
           ref={ref}

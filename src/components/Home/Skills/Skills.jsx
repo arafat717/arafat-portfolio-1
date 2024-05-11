@@ -57,7 +57,7 @@ const Skills = () => {
   };
 
   return (
-    <section name="Skills" className="w-full mx-auto py-16">
+    <section name="Skills" className="w-full mx-auto py-5">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           className="pb-8"

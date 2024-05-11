@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import HeroImage2 from "../../../assets/assets/arafat.png";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
       name="home"
-      className="h-screen gap-1 w-full"
+      className=" gap-1 w-full"
     >
       <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row">
         <div className="flex flex-col justify-center h-full md:w-1/2">

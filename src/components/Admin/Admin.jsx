@@ -1,8 +1,10 @@
+import { Outlet } from "react-router-dom";
+
 const Admin = () => {
   return (
-    <div>
-      <h1>this is admin channel</h1>
-    </div>
+    <>
+      <Outlet></Outlet>
+    </>
   );
 };
 

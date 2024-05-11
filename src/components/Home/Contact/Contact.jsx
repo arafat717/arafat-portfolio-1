@@ -59,7 +59,7 @@ const Contact = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        className="w-full h-screen bg-gradient-to-b p-4"
+        className="w-full bg-gradient-to-b p-4"
       >
         <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
           <div className="pb-8">

@@ -58,7 +58,7 @@ const Projects = () => {
   };
 
   return (
-    <div name="Project" className="w-full h-screen">
+    <div name="Project" className="w-full">
       <div
         ref={ref}
         className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"
