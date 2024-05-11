@@ -98,6 +98,12 @@ function AdminDashboard() {
               >
                 Add Blog
               </Link>
+              <Link
+                to="/dashboard/add-experience"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Add Experience
+              </Link>
               <a href="#" className="ml-6 text-white hover:text-gray-300">
                 Logout
               </a>

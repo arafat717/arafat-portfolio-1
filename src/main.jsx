@@ -14,6 +14,7 @@ import AddSkills from "./components/Admin/AddSkills/AddSkills.jsx";
 import AddProject from "./components/Admin/AddProject/AddProject.jsx";
 import AddEducation from "./components/Admin/AddEducation/AddEducation.jsx";
 import AddBlog from "./components/Admin/AddBlog/AddBlog.jsx";
+import AddExperience from "./components/Admin/AddExperience/AddExperience.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add-about",
         element: <AddBlog></AddBlog>,
+      },
+      {
+        path: "/dashboard/add-experience",
+        element: <AddExperience></AddExperience>,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const AddProject = () => {
+const AddExperience = () => {
   const {
     register,
     handleSubmit,
@@ -12,7 +12,7 @@ const AddProject = () => {
   };
   return (
     <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Project Submission Form</h2>
+      <h2 className="text-2xl font-bold mb-4">I Have To Work On it</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-2 gap-4">
           <div className="mb-4">
@@ -168,4 +168,4 @@ const AddProject = () => {
   );
 };
 
-export default AddProject;
+export default AddExperience;
