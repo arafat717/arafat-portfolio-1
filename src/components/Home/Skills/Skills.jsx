@@ -57,50 +57,52 @@ const Skills = () => {
   };
 
   return (
-    <section name="Skills" className="w-full mx-auto py-5">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          className="pb-8"
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          variants={headerVariants}
-        >
-          <motion.p
-            className="text-4xl font-bold inline border-b-4 border-gray-500"
-            variants={{
-              hidden: { opacity: 0, y: -20 },
-              visible: { opacity: 1, y: 0 },
-            }}
+    <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+      <section name="Skills">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            className="pb-8"
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={headerVariants}
           >
-            Skills
-          </motion.p>
-        </motion.div>
-        <div
-          ref={ref}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8"
-        >
-          {techs.map(({ id, src, title }) => (
-            <motion.div
-              key={id}
-              className="flex flex-col items-center p-3 rounded-lg border border-gray-200"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, delay: 0.4 }}
+            <motion.p
+              className="text-4xl font-bold inline border-b-4 border-gray-500"
+              variants={{
+                hidden: { opacity: 0, y: -20 },
+                visible: { opacity: 1, y: 0 },
+              }}
             >
-              <motion.img
-                src={src}
-                alt={title}
-                className="w-20 h-20 mb-3"
-                initial={{ opacity: 0.1 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 * id }}
-              />
-              <p className="text-lg font-semibold text-center">{title}</p>
-            </motion.div>
-          ))}
+              Skills
+            </motion.p>
+          </motion.div>
+          <div
+            ref={ref}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8"
+          >
+            {techs.map(({ id, src, title }) => (
+              <motion.div
+                key={id}
+                className="flex flex-col items-center p-3 rounded-lg border border-gray-200"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.9, delay: 0.4 }}
+              >
+                <motion.img
+                  src={src}
+                  alt={title}
+                  className="w-20 h-20 mb-3"
+                  initial={{ opacity: 0.1 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.1 * id }}
+                />
+                <p className="text-lg font-semibold text-center">{title}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

@@ -1,14 +1,24 @@
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { useCerateBlogMutation } from "../../Redux/api/blogApi";
 
 const AddBlog = () => {
+  const [cerateBlog] = useCerateBlogMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const blogdata = {
+      blog: data,
+    };
+    const blog = await cerateBlog(blogdata);
+    console.log(blog);
+    reset();
+    Swal.fire("Blog added successfully");
   };
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">

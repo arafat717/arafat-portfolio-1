@@ -1,14 +1,18 @@
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AddProject = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+    reset();
+    Swal.fire("Project added successfully");
   };
   return (
     <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
