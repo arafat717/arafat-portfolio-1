@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 /* eslint-disable react/prop-types */
 const BlogCard = ({ blog }) => {
   const { imageUrl, content, title, author, _id } = blog;
   return (
-    <div className="max-w-md mx-auto border border-red-200 bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-5">
+    <motion.div
+      className="max-w-md mx-auto border border-red-200 bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-5"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+    >
       <div className="md:flex">
         <div className="md:flex-shrink-0">
           <img
-            className=" items-center w-full h-full object-cover md:w-48"
+            className="items-center w-full h-full object-cover md:w-48"
             src={imageUrl}
             alt="Blog Cover"
           />
@@ -25,11 +31,11 @@ const BlogCard = ({ blog }) => {
             to={`/blog/${_id}`}
             className="mt-4 cursor-pointer block text-sm font-medium text-indigo-600 hover:text-indigo-500"
           >
-            Read more
+            Read
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

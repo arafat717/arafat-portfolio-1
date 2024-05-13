@@ -11,7 +11,7 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
       name="home"
-      className=" gap-1 w-full"
+      className="gap-1 w-full"
     >
       <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row">
         <div className="flex flex-col justify-center h-full md:w-1/2">

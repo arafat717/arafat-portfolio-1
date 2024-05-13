@@ -1,12 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useGetBlogByIdQuery } from "../Redux/api/blogApi";
 import { motion } from "framer-motion";
+import Loading from "./Loading";
 
 const BlogDetailsPage = () => {
   const { blogId } = useParams();
   const { data: blog, isLoading, isError } = useGetBlogByIdQuery(blogId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
   if (isError) return <div>Error fetching blog</div>;
   if (!blog) return <div>No blog found</div>;
 

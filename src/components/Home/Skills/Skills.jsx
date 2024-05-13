@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useGetSkillQuery } from "../../Redux/api/skillApi";
+import Loading from "../../Ui/Loading";
 
 const Skills = () => {
-  const { data } = useGetSkillQuery({});
+  const { data, isLoading, isError } = useGetSkillQuery({});
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({ triggerOnce: true });
 
@@ -13,6 +14,15 @@ const Skills = () => {
       setIsVisible(true);
     }
   }, [inView]);
+
+  if (isLoading)
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
+  if (isError) return <div>Error fetching blog</div>;
+  if (!data) return <div>No blog found</div>;
 
   const headerVariants = {
     hidden: {

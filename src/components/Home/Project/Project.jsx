@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useGetProjectQuery } from "../../Redux/api/projectApi";
+import Loading from "../../Ui/Loading";
 
 const Projects = () => {
-  const { data } = useGetProjectQuery({});
+  const { data, isLoading, isError } = useGetProjectQuery({});
   const [isVisible, setIsVisible] = useState(false);
   const animationControls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true });
-
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
@@ -19,6 +19,15 @@ const Projects = () => {
       });
     }
   }, [animationControls, inView]);
+
+  if (isLoading)
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
+  if (isError) return <div>Error fetching blog</div>;
+  if (!data) return <div>No blog found</div>;
 
   const headerVariants = {
     hidden: {
