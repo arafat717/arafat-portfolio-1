@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useCerateProjectMutation } from "../../Redux/api/projectApi";
 
 const AddProject = () => {
+  const [createProject] = useCerateProjectMutation();
   const {
     register,
     handleSubmit,
@@ -9,8 +11,13 @@ const AddProject = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const projectdata = {
+      project: data,
+    };
+
+    const project = await createProject(projectdata);
+    console.log(project);
     reset();
     Swal.fire("Project added successfully");
   };

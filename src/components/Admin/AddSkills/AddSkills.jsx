@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useCerateSkillMutation } from "../../Redux/api/skillApi";
 
 const AddSkills = () => {
+  const [createSkill] = useCerateSkillMutation();
   const {
     register,
     handleSubmit,
@@ -9,11 +11,19 @@ const AddSkills = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // You can handle form submission here
-    reset();
-    Swal.fire("Skill added successfully");
+  const onSubmit = async (data) => {
+    try {
+      const skilldata = {
+        skill: data,
+      };
+      const skill = await createSkill(skilldata);
+      console.log(skill);
+      // You can handle form submission here
+      reset();
+      Swal.fire("Skill added successfully");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

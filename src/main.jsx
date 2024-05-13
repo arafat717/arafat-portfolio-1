@@ -19,6 +19,7 @@ import AddAboutMe from "./components/Admin/AddAboutMe/AddAboutMe.jsx";
 import { Provider } from "react-redux";
 import { store } from "./components/Redux/store.js";
 import Blog from "./components/Home/Blog/Blog.jsx";
+import BlogDetailsPage from "./components/Ui/BlogDetailsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "blog/:blogId",
+        element: <BlogDetailsPage></BlogDetailsPage>,
       },
       {
         path: "Skills",

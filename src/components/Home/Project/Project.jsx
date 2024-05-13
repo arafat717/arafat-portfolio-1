@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import reactWeather1 from "../../../assets/assets/Screenshot (146).png";
-import reactWeather2 from "../../../assets/assets/Screenshot (147).png";
-import reactWeather3 from "../../../assets/assets/portfolio/Screenshot (74).png";
+import { useGetProjectQuery } from "../../Redux/api/projectApi";
 
 const Projects = () => {
+  const { data } = useGetProjectQuery({});
   const [isVisible, setIsVisible] = useState(false);
   const animationControls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -20,27 +19,6 @@ const Projects = () => {
       });
     }
   }, [animationControls, inView]);
-
-  const projectCards = [
-    {
-      image: reactWeather3,
-      projectLink: "https://asetta-autos-645ad.web.app/",
-      clientLink: "https://github.com/arafat717/Asetta-Autos-client",
-      serverLink: "https://github.com/arafat717/Asetta-Autos-Server",
-    },
-    {
-      image: reactWeather1,
-      projectLink: "https://disaster-relif.vercel.app/",
-      clientLink: "https://github.com/arafat717/Disaster-Relif-Frontend",
-      serverLink: "https://github.com/arafat717/Disaster-Relif-Backend",
-    },
-    {
-      image: reactWeather2,
-      projectLink: "https://mobile-shope-deploy.vercel.app/",
-      clientLink: "https://github.com/arafat717/mobile-shop-client",
-      serverLink: "https://github.com/arafat717/Mobile-shop-backend",
-    },
-  ];
 
   const headerVariants = {
     hidden: {
@@ -86,29 +64,29 @@ const Projects = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.4 }}
         >
-          {projectCards.map((project, index) => (
+          {data?.data?.map((project, index) => (
             <motion.div
               key={index}
               className="shadow-md shadow-gray-600 rounded-lg "
               whileHover={{ scale: 1.05 }}
             >
               <img
-                src={project.image}
+                src={project.imageUrl}
                 alt={`Project ${index + 1}`}
                 className="rounded-md duration-200 hover:scale-105"
               />
               <div className="flex items-center justify-center">
-                <a className="w-1/2 px-6 py-3 m-4" href={project.projectLink}>
+                <a className="w-1/2 px-6 py-3 m-4" href={project.liveLink}>
                   Project
                 </a>
                 <div className="flex items-center justify-center">
                   <div>
-                    <a className="w-1/2 px-6" href={project.clientLink}>
+                    <a className="w-1/2 px-6" href={project.clientRepo}>
                       Client
                     </a>
                   </div>
                   <div>
-                    <a className="w-1/2 px-6" href={project.serverLink}>
+                    <a className="w-1/2 px-6" href={project.serverRepo}>
                       Server
                     </a>
                   </div>

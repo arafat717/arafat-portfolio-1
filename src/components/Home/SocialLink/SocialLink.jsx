@@ -11,7 +11,7 @@ const SocialLink = () => {
           LinkedIn <FaLinkedin size={30} />
         </>
       ),
-      href: "https://www.linkedin.com/in/arafat-hossen-joni-1931a5291/",
+      href: "https://www.linkedin.com/in/arafathossenjoni/",
       style: "rounded-tr-md",
     },
     {

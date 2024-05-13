@@ -2,7 +2,7 @@ import { useGetBlogQuery } from "../../Redux/api/blogApi";
 import BlogCard from "../../Ui/BlogCard";
 
 const Blog = () => {
-  const { data } = useGetBlogQuery("");
+  const { data } = useGetBlogQuery({});
 
   return (
     <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
