@@ -1,59 +1,51 @@
-import { Link } from "react-scroll";
+import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-  const links = [
-    {
-      id: 1,
-      link: "home",
-    },
-    {
-      id: 2,
-      link: "about",
-    },
-    {
-      id: 3,
-      link: "Education",
-    },
-    {
-      id: 4,
-      link: "Project",
-    },
-    {
-      id: 5,
-      link: "Skills",
-    },
-    {
-      id: 6,
-      link: "contact",
-    },
-  ];
-
   return (
-    <footer className="py-6 border-t border-gray-200 bg-gray-100 ">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-        <div className="text-sm mb-4 lg:mb-0 text-gray-600">
-          <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
-          <p>Designed and developed by Arafat Hossen Joni</p>
+    <footer className="bg-gray-200 border border-gray-400 pt-12 pb-3 relative bottom-0">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-20">
+        <div>
+          <h2 className="text-xl font-bold mb-4">About Me</h2>
+          <p className="text-sm">
+            Brief description about yourself and your expertise.
+          </p>
         </div>
-        <div className="text-sm flex flex-wrap justify-center lg:justify-end">
+        <div>
+          <h2 className="text-xl font-bold mb-4">Contact Me</h2>
+          <p className="text-sm">Email: your@email.com</p>
+          <p className="text-sm">Phone: +1234567890</p>
+          <p className="text-sm">Location: Your City, Country</p>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4">Social Media</h2>
           <ul className="flex space-x-4">
-            {links.map(({ id, link }) => (
-              <li
-                key={id}
-                className="px-2 py-1 rounded-md cursor-pointer capitalize font-medium text-gray-700 hover:text-blue-600 transition duration-300"
-              >
-                <Link
-                  to={link}
-                  smooth
-                  duration={500}
-                  className="hover:underline"
-                >
-                  {link}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <a href="#" className="">
+                <FaTwitter />
+              </a>
+            </li>
+            <li>
+              <a href="#" className="">
+                <FaLinkedin />
+              </a>
+            </li>
+            <li>
+              <a href="#" className="">
+                <FaGithub />
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-xl text-blue-600">
+                <FaFacebook />
+              </a>
+            </li>
           </ul>
         </div>
+      </div>
+      <div className="mt-8 text-center">
+        <p className="text-sm">
+          &copy; {new Date().getFullYear()} Your Name. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

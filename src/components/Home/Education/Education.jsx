@@ -36,7 +36,7 @@ const Education = () => {
 
   return (
     <div name="Education">
-      <div className="w-full">
+      <div className="w-full my-14">
         <div
           ref={ref}
           className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"

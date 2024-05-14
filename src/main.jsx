@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home/Home/Home.jsx";
-import About from "./components/Home/About/About.jsx";
 import Education from "./components/Home/Education/Education.jsx";
 import Projects from "./components/Home/Project/Project.jsx";
 import Skills from "./components/Home/Skills/Skills.jsx";
@@ -20,6 +18,8 @@ import { Provider } from "react-redux";
 import { store } from "./components/Redux/store.js";
 import Blog from "./components/Home/Blog/Blog.jsx";
 import BlogDetailsPage from "./components/Ui/BlogDetailsPage.jsx";
+import HomeLayout from "./components/HomeLayout.jsx";
+import AboutLayout from "./components/AboutLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,15 +28,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <HomeLayout></HomeLayout>,
       },
       {
         path: "home",
-        element: <Home></Home>,
+        element: <HomeLayout></HomeLayout>,
       },
       {
         path: "about",
-        element: <About></About>,
+        element: <AboutLayout></AboutLayout>,
       },
       {
         path: "Education",
@@ -98,8 +98,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <div className="max-w-[1400px] mx-auto">
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </div>
   </React.StrictMode>
 );

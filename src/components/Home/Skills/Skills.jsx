@@ -40,7 +40,7 @@ const Skills = () => {
   };
 
   return (
-    <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+    <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center my-14 w-full h-full">
       <section name="Skills">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div

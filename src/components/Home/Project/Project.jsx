@@ -45,7 +45,7 @@ const Projects = () => {
   };
 
   return (
-    <div name="Project" className="w-full">
+    <div name="Project" className="w-full mt-14 mb-20">
       <div
         ref={ref}
         className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"

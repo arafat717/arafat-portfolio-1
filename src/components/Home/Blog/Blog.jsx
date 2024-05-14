@@ -16,7 +16,7 @@ const Blog = () => {
   if (!data) return <div>No blog found</div>;
 
   return (
-    <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+    <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full mt-14">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

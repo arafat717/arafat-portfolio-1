@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import HeroImage2 from "../../../assets/assets/arafat.png";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,13 +37,13 @@ const About = () => {
 
   return (
     <div name="about">
-      <div className="w-full bg-gradient-to-b">
+      <div className="w-full bg-gradient-to-b mt-14">
         <div
           className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full"
           ref={ref}
         >
           <motion.div
-            className="pb-5"
+            className="pb-14"
             initial={{ opacity: 0, y: -20 }}
             animate={animationControls}
             variants={headerVariants}
@@ -56,34 +57,57 @@ const About = () => {
             </motion.p>
           </motion.div>
 
-          <motion.p
-            className="mt-5"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Welcome to my corner of the web! I'm a passionate web developer with
-            a knack for transforming ideas into captivating digital experiences.
-            Whether it's crafting sleek user interfaces or optimizing backend
-            functionality, I thrive on the creative process of bringing concepts
-            to life in the digital realm.
-          </motion.p>
-          <br />
-
-          <motion.p
-            className=""
-            initial={{ opacity: 0, y: 50 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            My journey into web development was sparked by my early fascination
-            with computers. From the moment I laid eyes on a computer screen, I
-            was captivated by the endless possibilities it offered. As I delved
-            deeper into the world of technology, I discovered the artistry and
-            technical precision of web development, and I knew I had found my
-            calling.
-          </motion.p>
-          <motion.p
+          <div className="md:flex items-center justify-center gap-1">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="md:w-3/4 -mt-14 md:-ml-20"
+            >
+              <img
+                src={HeroImage2}
+                alt="my profile"
+                className="rounded-2xl mx-auto w-full md:full"
+              />
+            </motion.div>
+            <div className="w-full">
+              <motion.h2
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.7 }}
+                className="text-xl font-semibold mt-2 sm:text-4xl  "
+              >
+                MERN Stack Developer
+              </motion.h2>
+              <motion.p
+                className="mt-5"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Welcome to my corner of the web! I'm a passionate web developer
+                with a knack for transforming ideas into captivating digital
+                experiences. Whether it's crafting sleek user interfaces or
+                optimizing backend functionality, I thrive on the creative
+                process of bringing concepts to life in the digital realm.
+              </motion.p>
+              <br />
+              <motion.p
+                className=""
+                initial={{ opacity: 0, y: 50 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                My journey into web development was sparked by my early
+                fascination with computers. From the moment I laid eyes on a
+                computer screen, I was captivated by the endless possibilities
+                it offered. As I delved deeper into the world of technology, I
+                discovered the artistry and technical precision of web
+                development, and I knew I had found my calling.
+              </motion.p>
+            </div>
+          </div>
+          {/* <motion.p
             className="mt-5"
             initial={{ opacity: 0, y: 50 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -118,7 +142,7 @@ const About = () => {
             ahead in the dynamic world of web development. Whether you're a
             startup with big dreams or an established business seeking to
             innovate, I'm here to help turn your vision into reality.
-          </motion.p>
+          </motion.p> */}
         </div>
       </div>
     </div>
