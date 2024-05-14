@@ -1,50 +1,36 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useInView } from "react-intersection-observer";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
-import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({ triggerOnce: true });
   const formControls = useRef(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const formik = useFormik({
-    initialValues: {
-      user_name: "",
-      user_email: "",
-      message: "",
-    },
-    validationSchema: Yup.object({
-      user_name: Yup.string().required("Name is required"),
-      user_email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      message: Yup.string().required("Message is required"),
-    }),
-    onSubmit: (values, { resetForm }) => {
-      emailjs
-        .sendForm(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
-          formControls.current,
-          "YOUR_USER_ID"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            resetForm();
-            Swal.fire("Email sent successfully");
-          },
-          (error) => {
-            console.log(error.text);
-            Swal.fire("Error sending email", error.message, "error");
-          }
-        );
-    },
-  });
+  const onSubmit = async (data) => {
+    emailjs
+      .send("service_fs8pvqe", "template_2dt09ue", data, {
+        publicKey: "b7RwsZg4VxR_HazEv",
+      })
+      .then(
+        () => {
+          Swal.fire("Message send successfully");
+        },
+        (error) => {
+          Swal.fire("FAILED...", error.text);
+        }
+      );
+    reset();
+  };
 
   useEffect(() => {
     if (inView) {
@@ -79,7 +65,7 @@ const Contact = () => {
           <div className={`flex justify-center items-center`}>
             <form
               ref={formControls}
-              onSubmit={formik.handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className=" flex flex-col w-full md:w-1/2"
             >
               <input
@@ -87,30 +73,30 @@ const Contact = () => {
                 name="user_name"
                 placeholder="Enter your name"
                 className="p-2 bg-transparent border-2 rounded-md  focus:outline-none"
-                {...formik.getFieldProps("user_name")}
+                {...register("user_name", { required: "Name is required" })}
               />
-              {formik.touched.user_name && formik.errors.user_name && (
-                <div className="text-red-600">{formik.errors.user_name}</div>
+              {errors.user_name && (
+                <div className="text-red-600">{errors.user_name.message}</div>
               )}
               <input
                 type="text"
                 name="user_email"
                 placeholder="Enter your email"
                 className="my-4 p-2 bg-transparent border-2 rounded-md  focus:outline-none"
-                {...formik.getFieldProps("user_email")}
+                {...register("user_email", { required: "Email is required" })}
               />
-              {formik.touched.user_email && formik.errors.user_email && (
-                <div className="text-red-600">{formik.errors.user_email}</div>
+              {errors.user_email && (
+                <div className="text-red-600">{errors.user_email.message}</div>
               )}
               <textarea
                 name="message"
                 placeholder="Enter your message"
                 rows="10"
                 className="p-2 bg-transparent border-2 rounded-md focus:outline-none"
-                {...formik.getFieldProps("message")}
+                {...register("message", { required: "Message is required" })}
               ></textarea>
-              {formik.touched.message && formik.errors.message && (
-                <div className="text-red-600">{formik.errors.message}</div>
+              {errors.message && (
+                <div className="text-red-600">{errors.message.message}</div>
               )}
               <motion.input
                 whileHover={{ scale: 1.1 }}
