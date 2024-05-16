@@ -1,10 +1,24 @@
 import { FaRegEdit } from "react-icons/fa";
-import { useGetSkillQuery } from "../../Redux/api/skillApi";
+import {
+  useDeleteSkillMutation,
+  useGetSkillQuery,
+} from "../../Redux/api/skillApi";
 import Loading from "../../Ui/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const SkillsManage = () => {
   const { data, isLoading, isError } = useGetSkillQuery({});
+  const [deleteSkill] = useDeleteSkillMutation();
+
+  const handleDelete = async (skillId) => {
+    try {
+      await deleteSkill(skillId);
+      Swal.fire("Skill deleted successfully");
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+    }
+  };
 
   if (isLoading)
     return (
@@ -58,7 +72,10 @@ const SkillsManage = () => {
                 <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <AiOutlineDelete className="cursor-pointer text-4xl text-white bg-red-600 p-2 rounded-md"></AiOutlineDelete>
+                <AiOutlineDelete
+                  onClick={() => handleDelete(product._id)}
+                  className="cursor-pointer text-4xl text-white bg-red-600 p-2 rounded-md"
+                ></AiOutlineDelete>
               </td>
             </tr>
           ))}

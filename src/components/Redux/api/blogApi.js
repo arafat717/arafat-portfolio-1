@@ -18,8 +18,19 @@ const blogApi = baseApi.injectEndpoints({
       query: (blogId) => `blog/${blogId}`,
       providesTags: ["blog"],
     }),
+    deleteBlog: build.mutation({
+      query: (blogId) => ({
+        url: `blog/${blogId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["blog"],
+    }),
   }),
 });
 
-export const { useCerateBlogMutation, useGetBlogQuery, useGetBlogByIdQuery } =
-  blogApi;
+export const {
+  useCerateBlogMutation,
+  useGetBlogQuery,
+  useGetBlogByIdQuery,
+  useDeleteBlogMutation,
+} = blogApi;

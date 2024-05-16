@@ -83,6 +83,15 @@ function AdminDashboard() {
               </svg>
             </button>
             <div>
+              <Link to="/" className="ml-6 text-white hover:text-gray-300">
+                HOME
+              </Link>
+              <Link
+                to="/dashboard"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                HOME
+              </Link>
               <Link
                 to="/dashboard/add-about"
                 className="ml-6 text-white hover:text-gray-300"

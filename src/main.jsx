@@ -26,6 +26,7 @@ import BlogManage from "./components/Admin/ManageDashboard/BlogManage.jsx";
 import AboutManage from "./components/Admin/ManageDashboard/AboutManage.jsx";
 import ExperianceManage from "./components/Admin/ManageDashboard/ExperianceManage.jsx";
 import EducationManage from "./components/Admin/ManageDashboard/EducationManage.jsx";
+import About from "./components/Home/About/About.jsx";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <AdminDashboard></AdminDashboard>,
     children: [
+      {
+        path: "/dashboard",
+        element: <About></About>,
+      },
       {
         path: "/dashboard/add-skills",
         element: <AddSkills></AddSkills>,
