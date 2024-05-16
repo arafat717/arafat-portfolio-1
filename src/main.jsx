@@ -20,6 +20,12 @@ import Blog from "./components/Home/Blog/Blog.jsx";
 import BlogDetailsPage from "./components/Ui/BlogDetailsPage.jsx";
 import HomeLayout from "./components/HomeLayout.jsx";
 import AboutLayout from "./components/AboutLayout.jsx";
+import ProjectManage from "./components/Admin/ManageDashboard/ProjectManage.jsx";
+import SkillsManage from "./components/Admin/ManageDashboard/SkillsManage.jsx";
+import BlogManage from "./components/Admin/ManageDashboard/BlogManage.jsx";
+import AboutManage from "./components/Admin/ManageDashboard/AboutManage.jsx";
+import ExperianceManage from "./components/Admin/ManageDashboard/ExperianceManage.jsx";
+import EducationManage from "./components/Admin/ManageDashboard/EducationManage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -91,6 +97,30 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add-experience",
         element: <AddExperience></AddExperience>,
+      },
+      {
+        path: "/dashboard/manage-project",
+        element: <ProjectManage></ProjectManage>,
+      },
+      {
+        path: "/dashboard/manage-skill",
+        element: <SkillsManage></SkillsManage>,
+      },
+      {
+        path: "/dashboard/manage-blog",
+        element: <BlogManage></BlogManage>,
+      },
+      {
+        path: "/dashboard/manage-about",
+        element: <AboutManage></AboutManage>,
+      },
+      {
+        path: "/dashboard/manage-experience",
+        element: <ExperianceManage></ExperianceManage>,
+      },
+      {
+        path: "/dashboard/manage-education",
+        element: <EducationManage></EducationManage>,
       },
     ],
   },

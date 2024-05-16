@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 function AdminDashboard() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -18,26 +18,54 @@ function AdminDashboard() {
       >
         <div className="p-4">
           <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-          <ul>
+          <ul className="mt-10">
             <li className="mb-4">
-              <a href="#" className="hover:text-gray-300">
-                Dashboard
-              </a>
+              <Link
+                to="/dashboard/manage-about"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage About
+              </Link>
             </li>
             <li className="mb-4">
-              <a href="#" className="hover:text-gray-300">
-                Reports
-              </a>
+              <Link
+                to="/dashboard/manage-education"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage Education
+              </Link>
             </li>
             <li className="mb-4">
-              <a href="#" className="hover:text-gray-300">
-                Analytics
-              </a>
+              <Link
+                to="/dashboard/manage-project"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage Project
+              </Link>
             </li>
             <li className="mb-4">
-              <a href="#" className="hover:text-gray-300">
-                Settings
-              </a>
+              <Link
+                to="/dashboard/manage-skill"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage Skills
+              </Link>
+            </li>
+            <li className="mb-4">
+              <Link
+                to="/dashboard/manage-blog"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage Blog
+              </Link>
+            </li>
+            <li className="mb-4">
+              <Link
+                to="/dashboard/manage-experience"
+                className="ml-6 text-white hover:text-gray-300"
+              >
+                Manage Experience
+              </Link>
             </li>
           </ul>
         </div>
