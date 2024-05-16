@@ -1,22 +1,21 @@
 import { useGetProjectQuery } from "../../Redux/api/projectApi";
 import Loading from "../../Ui/Loading";
-import { FaUpload } from "react-icons/fa";
+
+import { AiOutlineDelete } from "react-icons/ai";
+import { FaRegEdit } from "react-icons/fa";
 
 const ProjectManage = () => {
   const { data, isLoading, isError } = useGetProjectQuery({});
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div>
         <Loading />
       </div>
     );
 
   if (isError)
     return <div className="text-red-600">Error fetching project</div>;
-
-  // if (!data || !data.length)
-  //   return <div className="text-gray-600">No projects found</div>;
 
   return (
     <div className="overflow-x-auto">
@@ -56,13 +55,13 @@ const ProjectManage = () => {
                 <img src={product.imageUrl} alt="" className="w-28 " />
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {product?.liveLink}
+                {product?.liveLink.slice(0, 50)}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaUpload></FaUpload>
+                <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaUpload></FaUpload>
+                <AiOutlineDelete className="cursor-pointer text-4xl text-white bg-red-600 p-2 rounded-md"></AiOutlineDelete>
               </td>
             </tr>
           ))}

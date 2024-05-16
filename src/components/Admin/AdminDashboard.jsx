@@ -1,21 +1,11 @@
-import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 function AdminDashboard() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div
-        className={`bg-gray-800 text-white w-64 min-h-screen ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
+
+      <div className={`bg-gray-800 text-white w-64 h-full`}>
         <div className="p-4">
           <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
           <ul className="mt-10">
@@ -74,12 +64,9 @@ function AdminDashboard() {
       {/* Content Area */}
       <div className="flex-1">
         {/* Top Navigation */}
-        <nav className="bg-gray-800 p-4">
+        <nav className="bg-gray-800 p-4 sticky top-0">
           <div className="flex justify-between items-center">
-            <button
-              onClick={toggleSidebar}
-              className="text-white focus:outline-none md:hidden"
-            >
+            <button className="text-white focus:outline-none md:hidden">
               <svg
                 className="w-6 h-6"
                 fill="none"
