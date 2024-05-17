@@ -6,6 +6,7 @@ import {
 import Loading from "../../Ui/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import Modal from "../../Ui/Modal";
 
 const SkillsManage = () => {
   const { data, isLoading, isError } = useGetSkillQuery({});
@@ -69,7 +70,13 @@ const SkillsManage = () => {
                 {product?.skillName}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                <FaRegEdit
+                  onClick={() =>
+                    document.getElementById("my_modal_4").showModal()
+                  }
+                  className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"
+                ></FaRegEdit>
+                <Modal></Modal>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <AiOutlineDelete
