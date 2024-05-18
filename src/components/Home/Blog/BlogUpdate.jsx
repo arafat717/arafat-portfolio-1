@@ -1,28 +1,44 @@
 import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetBlogByIdQuery,
+  useUpdateBlogMutation,
+} from "../../Redux/api/blogApi";
+import { useEffect } from "react";
+import Loading from "../../Ui/Loading";
 import Swal from "sweetalert2";
-import { useCerateBlogMutation } from "../../Redux/api/blogApi";
-import { useNavigate } from "react-router-dom";
 
-const AddBlog = () => {
-  const [cerateBlog] = useCerateBlogMutation();
+const BlogUpdate = () => {
+  const { blogId } = useParams();
+  const { data, isLoading, isError } = useGetBlogByIdQuery(blogId);
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
 
-  const onSubmit = async (data) => {
-    const blogdata = {
-      blog: data,
-    };
-    const blog = await cerateBlog(blogdata);
-    console.log(blog);
-    reset();
-    Swal.fire("Blog added successfully");
-    navigate("/dashboard/manage-blog");
+  const [updatedBlog, { isLoading: isUpdating }] = useUpdateBlogMutation();
+
+  const { register, handleSubmit, reset } = useForm();
+
+  useEffect(() => {
+    if (data) {
+      reset(data.data); // Populate form with existing skill data
+    }
+  }, [data, reset]);
+  console.log(data);
+
+  const onSubmit = async (updatedData) => {
+    try {
+      await updatedBlog({ blogId: blogId, updatedBlog: updatedData });
+      reset();
+      Swal.fire("Skill updated successfully");
+      navigate("/dashboard/manage-blog");
+    } catch (error) {
+      console.error("Error updating skill:", error);
+      Swal.fire("Error updating skill");
+    }
   };
+
+  if (isLoading || isUpdating) return <Loading />;
+  if (isError) return <div>Error fetching skill data</div>;
+
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Add Blog</h2>
@@ -43,11 +59,11 @@ const AddBlog = () => {
               className="w-full border border-gray-300 rounded-md p-2"
               placeholder="Enter title"
             />
-            {errors.title && (
+            {/* {errors.title && (
               <p className="text-red-500 text-xs italic">
                 {errors.title.message}
               </p>
-            )}
+            )} */}
           </div>
           <div className="mb-4">
             <label
@@ -64,11 +80,11 @@ const AddBlog = () => {
               className="w-full border border-gray-300 rounded-md p-2"
               placeholder="Enter author"
             />
-            {errors.author && (
+            {/* {errors.author && (
               <p className="text-red-500 text-xs italic">
                 {errors.author.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <div className="mb-4">
@@ -86,11 +102,11 @@ const AddBlog = () => {
             rows="5"
             placeholder="Enter content"
           />
-          {errors.content && (
+          {/* {errors.content && (
             <p className="text-red-500 text-xs italic">
               {errors.content.message}
             </p>
-          )}
+          )} */}
         </div>
         <div className="mb-4">
           <label
@@ -109,11 +125,11 @@ const AddBlog = () => {
             className="input-field"
             placeholder="Enter image URL"
           />
-          {errors.imageUrl && (
+          {/* {errors.imageUrl && (
             <p className="text-red-500 text-xs italic">
               {errors.imageUrl.message}
             </p>
-          )}
+          )} */}
         </div>
         <button
           type="submit"
@@ -126,4 +142,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default BlogUpdate;

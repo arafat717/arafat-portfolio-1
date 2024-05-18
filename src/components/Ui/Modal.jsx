@@ -1,7 +1,17 @@
 import { useForm } from "react-hook-form";
 
 /* eslint-disable react/prop-types */
-const Modal = ({ closeModal, isOpen }) => {
+const Modal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  // const [createSkill] = useUpdateSkillMutation();
   const {
     register,
     handleSubmit,
@@ -9,22 +19,20 @@ const Modal = ({ closeModal, isOpen }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     // try {
-    //   const skilldata = {
-    //     skill: data,
-    //   };
-    //   const skill = await createSkill(skilldata);
+    //   const id = selectedItem._id;
+    //   const skill = await createSkill(data, id);
     //   console.log(skill);
     //   // You can handle form submission here
     //   reset();
-    //   Swal.fire("Skill added successfully");
+    //   closeModal();
+    //   Swal.fire("Skill updated successfully");
     // } catch (err) {
     //   console.log(err);
     // }
     console.log(data);
     reset();
-    closeModal();
   };
   return (
     <div>

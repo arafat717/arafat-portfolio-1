@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useCerateSkillMutation } from "../../Redux/api/skillApi";
+import { useNavigate } from "react-router-dom";
 
 const AddSkills = () => {
   const [createSkill] = useCerateSkillMutation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ const AddSkills = () => {
       // You can handle form submission here
       reset();
       Swal.fire("Skill added successfully");
+      navigate("/dashboard/manage-skill");
     } catch (err) {
       console.log(err);
     }

@@ -21,6 +21,18 @@ const skillApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["skill"],
     }),
+    getSkillById: build.query({
+      query: (skillId) => `skill/${skillId}`,
+      providesTags: ["skill"],
+    }),
+    updateSkill: build.mutation({
+      query: ({ skillId, updatedSkill }) => ({
+        url: `skill/${skillId}`,
+        method: "PUT",
+        body: updatedSkill,
+      }),
+      invalidatesTags: ["skill"],
+    }),
   }),
 });
 
@@ -28,4 +40,6 @@ export const {
   useCerateSkillMutation,
   useGetSkillQuery,
   useDeleteSkillMutation,
+  useUpdateSkillMutation,
+  useGetSkillByIdQuery,
 } = skillApi;

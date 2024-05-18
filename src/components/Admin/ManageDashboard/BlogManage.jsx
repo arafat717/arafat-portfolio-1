@@ -6,6 +6,7 @@ import {
 import Loading from "../../Ui/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const BlogManage = () => {
   const { data, isLoading, isError } = useGetBlogQuery({});
@@ -79,7 +80,9 @@ const BlogManage = () => {
                 {product?.author.slice(0, 50)}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                <Link to={`blog/${product._id}`}>
+                  <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                </Link>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <AiOutlineDelete

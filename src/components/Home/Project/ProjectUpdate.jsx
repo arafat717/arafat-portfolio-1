@@ -1,29 +1,47 @@
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import {
+  useGetProjectByIdQuery,
+  useUpdateProjectMutation,
+} from "../../Redux/api/projectApi";
 import Swal from "sweetalert2";
-import { useCerateProjectMutation } from "../../Redux/api/projectApi";
-import { useNavigate } from "react-router-dom";
+import Loading from "../../Ui/Loading";
 
-const AddProject = () => {
-  const [createProject] = useCerateProjectMutation();
+const ProjectUpdate = () => {
+  const { projectId } = useParams();
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  console.log(projectId);
+  const { data, isLoading, isError } = useGetProjectByIdQuery(projectId);
+  console.log(data);
+  const [updatedProject, { isLoading: isUpdating }] =
+    useUpdateProjectMutation();
 
-  const onSubmit = async (data) => {
-    const projectdata = {
-      project: data,
-    };
+  const { register, handleSubmit, reset } = useForm();
 
-    const project = await createProject(projectdata);
-    console.log(project);
-    reset();
-    Swal.fire("Project added successfully");
-    navigate("/dashboard/manage-project");
+  useEffect(() => {
+    if (data) {
+      reset(data.data); // Populate form with existing skill data
+    }
+  }, [data, reset]);
+  console.log(data);
+
+  const onSubmit = async (updatedData) => {
+    try {
+      await updatedProject({
+        projectId: projectId,
+        updatedProject: updatedData,
+      });
+      Swal.fire("Skill updated successfully");
+      navigate("/dashboard/manage-project");
+    } catch (error) {
+      console.error("Error updating skill:", error);
+      Swal.fire("Error updating skill");
+    }
   };
+
+  if (isLoading || isUpdating) return <Loading />;
+  if (isError) return <div>Error fetching skill data</div>;
   return (
     <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Project Submission Form</h2>
@@ -46,11 +64,11 @@ const AddProject = () => {
               className="input-field"
               placeholder="Enter image URL"
             />
-            {errors.imageUrl && (
+            {/* {errors.imageUrl && (
               <p className="text-red-500 text-xs italic">
                 {errors.imageUrl.message}
               </p>
-            )}
+            )} */}
           </div>
           <div className="mb-4">
             <label
@@ -69,11 +87,11 @@ const AddProject = () => {
               })}
               placeholder="Enter live URL"
             />
-            {errors.liveLink && (
+            {/* {errors.liveLink && (
               <p className="text-red-500 text-xs italic">
                 {errors.liveLink.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -94,11 +112,11 @@ const AddProject = () => {
               })}
               placeholder="Enter server URL"
             />
-            {errors.serverRepo && (
+            {/* {errors.serverRepo && (
               <p className="text-red-500 text-xs italic">
                 {errors.serverRepo.message}
               </p>
-            )}
+            )} */}
           </div>
           <div className="mb-4">
             <label
@@ -117,11 +135,11 @@ const AddProject = () => {
               })}
               placeholder="Enter client URL"
             />
-            {errors.clientRepo && (
+            {/* {errors.clientRepo && (
               <p className="text-red-500 text-xs italic">
                 {errors.clientRepo.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <div>
@@ -142,11 +160,11 @@ const AddProject = () => {
               })}
               placeholder="Enter technology"
             />
-            {errors.technology && (
+            {/* {errors.technology && (
               <p className="text-red-500 text-xs italic">
                 {errors.technology.message}
               </p>
-            )}
+            )} */}
           </div>
           <div className="mb-4">
             <label
@@ -164,11 +182,11 @@ const AddProject = () => {
               })}
               placeholder="Enter details"
             />
-            {errors.details && (
+            {/* {errors.details && (
               <p className="text-red-500 text-xs italic">
                 {errors.details.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <button
@@ -182,4 +200,4 @@ const AddProject = () => {
   );
 };
 
-export default AddProject;
+export default ProjectUpdate;

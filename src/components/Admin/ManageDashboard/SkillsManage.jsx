@@ -6,21 +6,11 @@ import {
 import Loading from "../../Ui/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
-import Modal from "../../Ui/Modal";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SkillsManage = () => {
   const { data, isLoading, isError } = useGetSkillQuery({});
   const [deleteSkill] = useDeleteSkillMutation();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   const handleDelete = async (skillId) => {
     try {
@@ -80,11 +70,9 @@ const SkillsManage = () => {
                 {product?.skillName}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaRegEdit
-                  onClick={() => openModal()}
-                  className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"
-                ></FaRegEdit>
-                <Modal closeModal={closeModal} isOpen={isOpen}></Modal>
+                <Link to={`skill/${product._id}`}>
+                  <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                </Link>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <AiOutlineDelete

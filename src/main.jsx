@@ -27,6 +27,9 @@ import AboutManage from "./components/Admin/ManageDashboard/AboutManage.jsx";
 import ExperianceManage from "./components/Admin/ManageDashboard/ExperianceManage.jsx";
 import EducationManage from "./components/Admin/ManageDashboard/EducationManage.jsx";
 import About from "./components/Home/About/About.jsx";
+import SkillUpdate from "./components/Home/Skills/SkillUpdate.jsx";
+import ProjectUpdate from "./components/Home/Project/ProjectUpdate.jsx";
+import BlogUpdate from "./components/Home/Blog/BlogUpdate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -108,12 +111,24 @@ const router = createBrowserRouter([
         element: <ProjectManage></ProjectManage>,
       },
       {
+        path: "/dashboard/manage-project/project/:projectId",
+        element: <ProjectUpdate></ProjectUpdate>,
+      },
+      {
         path: "/dashboard/manage-skill",
         element: <SkillsManage></SkillsManage>,
       },
       {
+        path: "/dashboard/manage-skill/Skill/:skillId",
+        element: <SkillUpdate></SkillUpdate>,
+      },
+      {
         path: "/dashboard/manage-blog",
         element: <BlogManage></BlogManage>,
+      },
+      {
+        path: "/dashboard/manage-blog/blog/:blogId",
+        element: <BlogUpdate></BlogUpdate>,
       },
       {
         path: "/dashboard/manage-about",

@@ -7,6 +7,7 @@ import Loading from "../../Ui/Loading";
 
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ProjectManage = () => {
   const { data, isLoading, isError } = useGetProjectQuery({});
@@ -72,7 +73,9 @@ const ProjectManage = () => {
                 {product?.liveLink.slice(0, 50)}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                <Link to={`/dashboard/manage-project/project/${product._id}`}>
+                  <FaRegEdit className="cursor-pointer text-4xl text-white bg-blue-600 p-2 rounded-md"></FaRegEdit>
+                </Link>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <AiOutlineDelete
