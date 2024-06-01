@@ -75,71 +75,71 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "arafat-dashboard",
     element: <AdminDashboard></AdminDashboard>,
     children: [
       {
-        path: "/dashboard",
+        path: "/arafat-dashboard",
         element: <About></About>,
       },
       {
-        path: "/dashboard/add-skills",
+        path: "/arafat-dashboard/add-skills",
         element: <AddSkills></AddSkills>,
       },
       {
-        path: "/dashboard/add-project",
+        path: "/arafat-dashboard/add-project",
         element: <AddProject></AddProject>,
       },
       {
-        path: "/dashboard/add-education",
+        path: "/arafat-dashboard/add-education",
         element: <AddEducation></AddEducation>,
       },
       {
-        path: "/dashboard/add-blog",
+        path: "/arafat-dashboard/add-blog",
         element: <AddBlog></AddBlog>,
       },
       {
-        path: "/dashboard/add-about",
+        path: "/arafat-dashboard/add-about",
         element: <AddAboutMe></AddAboutMe>,
       },
       {
-        path: "/dashboard/add-experience",
+        path: "/arafat-dashboard/add-experience",
         element: <AddExperience></AddExperience>,
       },
       {
-        path: "/dashboard/manage-project",
+        path: "/arafat-dashboard/manage-project",
         element: <ProjectManage></ProjectManage>,
       },
       {
-        path: "/dashboard/manage-project/project/:projectId",
+        path: "/arafat-dashboard/manage-project/project/:projectId",
         element: <ProjectUpdate></ProjectUpdate>,
       },
       {
-        path: "/dashboard/manage-skill",
+        path: "/arafat-dashboard/manage-skill",
         element: <SkillsManage></SkillsManage>,
       },
       {
-        path: "/dashboard/manage-skill/Skill/:skillId",
+        path: "/arafat-dashboard/manage-skill/Skill/:skillId",
         element: <SkillUpdate></SkillUpdate>,
       },
       {
-        path: "/dashboard/manage-blog",
+        path: "/arafat-dashboard/manage-blog",
         element: <BlogManage></BlogManage>,
       },
       {
-        path: "/dashboard/manage-blog/blog/:blogId",
+        path: "/arafat-dashboard/manage-blog/blog/:blogId",
         element: <BlogUpdate></BlogUpdate>,
       },
       {
-        path: "/dashboard/manage-about",
+        path: "/arafat-dashboard/manage-about",
         element: <AboutManage></AboutManage>,
       },
       {
-        path: "/dashboard/manage-experience",
+        path: "/arafat-dashboard/manage-experience",
         element: <ExperianceManage></ExperianceManage>,
       },
       {
-        path: "/dashboard/manage-education",
+        path: "/arafat-dashboard/manage-education",
         element: <EducationManage></EducationManage>,
       },
     ],
